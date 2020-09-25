@@ -225,10 +225,9 @@ impl Mnemonic {
     }
 
     /// Consume the `Mnemonic` and return the phrase as a `String`.
-    ///
-    /// This operation creates an empty string and swaps values with the mnemonic's phrase. This
-    /// allows `Mnemonic` to implement `Drop`, while still returning the phrase.
     pub fn into_phrase(mut self) -> String {
+        // Create an empty string and swap values with the mnemonic's phrase.
+        // This allows `Mnemonic` to implement `Drop`, while still returning the phrase.
         let mut phrase = String::new();
         mem::swap(&mut self.phrase, &mut phrase);
         phrase
